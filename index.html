@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TATTOO STUDIO GUKKY｜静岡市駿河区の完全予約制タトゥースタジオ</title>
+<meta name="description" content="静岡市駿河区の完全予約制タトゥースタジオ Gukky。女性彫師Non＋見習い3名。カウンセリング・デザイン料・カラー料金すべて無料、前金なし。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Michroma&family=Share+Tech+Mono&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0F0D10;
+  --surface:#181519;
+  --surface2:#211D23;
+  --line:#39323C;
+  --ink:#F0EBEF;
+  --dim:#ABA0AC;
+  --cyan:#5CE1FF;
+  --rose:#FF4D8D;
+  --glow:rgba(92,225,255,.35);
+  --rglow:rgba(255,77,141,.35);
+  --disp:'Michroma',sans-serif;
+  --mono:'Share Tech Mono',monospace;
+  --body:'Zen Kaku Gothic New','Hiragino Kaku Gothic ProN',sans-serif;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{max-width:100%;overflow-x:hidden}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.9;font-size:15.5px;overflow-wrap:anywhere}
+body.locked{overflow:hidden}
+::selection{background:var(--rose);color:#fff}
+img{max-width:100%;display:block}
+a{color:inherit;-webkit-tap-highlight-color:transparent}
+
+/* ========== BOOT / LOGO INTRO ========== */
+#boot{
+  position:fixed;inset:0;z-index:300;background:#000000;
+  display:flex;align-items:center;justify-content:center;
+  transition:opacity .8s var(--ease),visibility .8s;
+}
+#boot.done{opacity:0;visibility:hidden;pointer-events:none}
+#boot{cursor:pointer}
+#boot img{
+  width:min(92vw,900px);
+  opacity:0;
+  animation:fadeIn 1.4s var(--ease) .15s forwards;
+}
+@keyframes fadeIn{from{opacity:0;filter:blur(4px)}to{opacity:1;filter:blur(0)}}
+#boot .skip{
+  position:absolute;bottom:26px;left:50%;transform:translateX(-50%);
+  font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:var(--dim);
+  background:none;border:1px solid #3a343c;border-radius:999px;padding:9px 20px;cursor:pointer;
+  transition:color .2s,border-color .2s;
+}
+#boot .skip:hover{color:var(--cyan);border-color:var(--cyan)}
+
+/* ========== HEADER ========== */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:120;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 18px;
+  background:linear-gradient(to bottom,rgba(15,13,16,.92),rgba(15,13,16,0));
+  backdrop-filter:blur(6px);
+}
+header .brand{font-family:var(--disp);font-size:11px;letter-spacing:.2em;color:var(--ink)}
+header .brand span{color:var(--rose)}
+.burger{
+  width:44px;height:44px;border:1px solid var(--line);border-radius:12px;
+  background:rgba(14,20,36,.7);cursor:pointer;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;
+}
+.burger i{display:block;width:20px;height:1.5px;background:var(--ink);transition:.35s var(--ease)}
+.burger.open i:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.burger.open i:nth-child(2){opacity:0}
+.burger.open i:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+
+/* ========== DRAWER (詳細) ========== */
+#drawer{
+  position:fixed;inset:0;z-index:110;
+  background:rgba(15,13,16,.98);backdrop-filter:blur(10px);
+  overflow-y:auto;padding:78px 20px 60px;
+  opacity:0;visibility:hidden;transform:translateY(-12px);
+  transition:opacity .4s var(--ease),visibility .4s,transform .4s var(--ease);
+}
+#drawer.open{opacity:1;visibility:visible;transform:none}
+#drawer .inner{max-width:640px;margin:0 auto}
+.dttl{font-family:var(--mono);font-size:10px;letter-spacing:.3em;color:var(--cyan);text-align:center;margin-bottom:24px}
+
+.acc{border-bottom:1px solid var(--line)}
+.acc .ah{
+  width:100%;display:flex;align-items:center;gap:14px;
+  background:none;border:0;padding:20px 4px;cursor:pointer;color:var(--ink);text-align:left;
+  font-family:var(--body);transition:color .25s;
+}
+.acc .ah:hover{color:var(--rose)}
+.acc .no{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--cyan);flex:none}
+.acc .tx{flex:1;display:flex;flex-direction:column;gap:2px}
+.acc .tx b{font-family:var(--disp);font-size:14px;letter-spacing:.1em;font-weight:400}
+.acc .tx em{font-style:normal;font-size:12px;color:var(--dim);letter-spacing:.04em}
+.acc .mk{flex:none;width:14px;height:14px;position:relative}
+.acc .mk::before,.acc .mk::after{
+  content:"";position:absolute;left:0;top:6px;width:14px;height:1.5px;background:currentColor;
+  transition:transform .35s var(--ease);
+}
+.acc .mk::after{transform:rotate(90deg)}
+.acc.on .mk::after{transform:rotate(0)}
+.acc.on .ah{color:var(--rose)}
+.acc .ab{max-height:0;overflow:hidden;transition:max-height .45s var(--ease)}
+.acc .ai{padding:2px 4px 26px}
+
+#drawer h3{font-size:14px;letter-spacing:.06em;margin:18px 0 6px;color:var(--ink)}
+#drawer p{color:var(--dim);font-size:14px}
+.tbl{width:100%;border-collapse:collapse;margin-top:8px;font-size:14px}
+.tbl td{padding:9px 4px;border-bottom:1px solid rgba(57,50,60,.75);vertical-align:top}
+.tbl td:last-child{text-align:right;font-family:var(--mono);color:var(--rose);white-space:nowrap}
+
+.arow{display:block;text-decoration:none;border:1px solid var(--line);border-radius:12px;
+  padding:14px;margin-top:10px;background:var(--surface);transition:.25s var(--ease)}
+.arow:hover{border-color:var(--rose);transform:translateX(3px)}
+.arow .r{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;color:var(--cyan)}
+.arow .n{display:block;font-family:var(--disp);font-size:15px;margin:3px 0 5px}
+.arow .n i{font-style:normal;font-family:var(--mono);font-size:11px;color:var(--dim)}
+.arow .d{display:block;font-size:13px;color:var(--dim);line-height:1.7}
+.arow .p{display:block;font-family:var(--mono);font-size:11.5px;color:var(--rose);margin-top:7px}
+
+.flow{counter-reset:s;list-style:none;margin-top:12px}
+.flow li{position:relative;padding:0 0 18px 44px;border-left:1px solid var(--line);margin-left:12px}
+.flow li:last-child{border-left-color:transparent;padding-bottom:4px}
+.flow li::before{
+  counter-increment:s;content:"0" counter(s);
+  position:absolute;left:-16px;top:0;width:32px;height:32px;border-radius:50%;
+  background:var(--surface2);border:1px solid var(--line);color:var(--cyan);
+  font-family:var(--mono);font-size:11px;display:flex;align-items:center;justify-content:center;
+}
+.flow b{display:block;font-size:14px;margin-bottom:2px}
+.flow span{font-size:13.5px;color:var(--dim)}
+.info dt{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--cyan);margin-top:14px}
+.info dd{font-size:14.5px}
+.news{list-style:none}
+.news li{position:relative;padding-left:18px;font-size:14px;color:var(--dim);margin-bottom:8px}
+.news li::before{content:"▸";position:absolute;left:0;color:var(--rose)}
+.note{font-size:12.5px;color:var(--dim);margin-top:10px}
+.iglink{color:var(--cyan);text-decoration:none}
+.iglink:hover{color:var(--rose)}
+
+/* ========== HERO ========== */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;justify-content:flex-start;text-align:left;padding:110px 24px 64px}
+.hero .bg{position:absolute;inset:0;overflow:hidden}
+.hero .bg img{width:100%;height:100%;object-fit:cover;object-position:30% 50%;opacity:.82;filter:saturate(1.05) contrast(1.03)}
+.hero .bg::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(100deg,rgba(15,13,16,.9) 0%,rgba(15,13,16,.55) 38%,rgba(15,13,16,.2) 62%,rgba(15,13,16,.55) 100%),
+             linear-gradient(to top,var(--bg) 2%,rgba(15,13,16,0) 32%);
+}
+.hero .ct{position:relative;z-index:2;max-width:min(620px,92vw)}
+.hero h1{font-family:var(--disp);letter-spacing:.01em;line-height:.92}
+.hero h1 small{display:block;font-size:11px;letter-spacing:.4em;color:var(--dim);margin-bottom:16px;text-shadow:none;font-family:var(--mono)}
+.hero h1 .mark{display:block;white-space:nowrap;font-size:clamp(48px,15vw,128px);
+  text-shadow:0 0 22px var(--rglow),0 0 60px var(--rglow)}
+.hero .lead{margin-top:24px;font-size:14.5px;color:var(--dim);max-width:32em}
+.cta{display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-start;margin-top:30px}
+.btn{
+  font-family:var(--mono);font-size:12px;letter-spacing:.14em;
+  padding:14px 26px;border-radius:999px;border:1px solid var(--rose);
+  background:var(--rose);color:#fff;cursor:pointer;text-decoration:none;
+  box-shadow:0 0 24px var(--rglow);transition:.25s var(--ease);
+}
+.btn:hover{transform:translateY(-2px);box-shadow:0 0 34px var(--rglow)}
+.scroll-hint{position:absolute;bottom:22px;left:24px;z-index:2;font-family:var(--mono);font-size:10px;letter-spacing:.24em;color:var(--dim);animation:bob 2.4s var(--ease) infinite}
+@keyframes bob{0%,100%{transform:translateY(0);opacity:.55}50%{transform:translateY(6px);opacity:1}}
+
+
+/* ========== GALLERY ========== */
+.gallery{max-width:900px;margin:0 auto;padding:88px 20px 10px}
+.gallery .lbl{font-family:var(--mono);font-size:10px;letter-spacing:.24em;color:var(--cyan);margin-bottom:22px;text-align:center}
+.gwrap{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.gwrap figure{margin:0;overflow:hidden;border:1px solid var(--line);border-radius:14px;background:var(--surface);aspect-ratio:1/1}
+.gwrap img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease),filter .5s}
+.gwrap figure:hover img{transform:scale(1.06);filter:brightness(1.12)}
+@media(min-width:700px){.gwrap{grid-template-columns:repeat(4,1fr)}}
+
+/* ========== ARTISTS ========== */
+.artists{max-width:900px;margin:0 auto;padding:88px 20px 10px}
+.artists .lbl{font-family:var(--mono);font-size:10px;letter-spacing:.24em;color:var(--cyan);margin-bottom:22px;text-align:center}
+.awrap{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.acard{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--surface);transition:.3s var(--ease)}
+.acard:hover{border-color:var(--rose);transform:translateY(-3px);box-shadow:0 8px 30px rgba(255,77,141,.18)}
+.acard .ph{aspect-ratio:3/4;overflow:hidden}
+.acard .ph img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease)}
+.acard:hover .ph img{transform:scale(1.06)}
+.acard .meta{padding:14px 14px 16px;display:flex;flex-direction:column;gap:4px}
+.acard .rl{font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;color:var(--cyan)}
+.acard .nm{font-family:var(--disp);font-size:clamp(22px,5vw,28px);line-height:1.05;letter-spacing:.03em}
+.acard .pr{font-family:var(--mono);font-size:11.5px;color:var(--rose);margin-top:2px}
+@media(min-width:700px){.awrap{grid-template-columns:repeat(4,1fr)}}
+
+/* ========== STUDIO ========== */
+.studio{max-width:1040px;margin:0 auto;padding:88px 20px 10px}
+.studio .lbl{font-family:var(--mono);font-size:10px;letter-spacing:.24em;color:var(--cyan);margin-bottom:16px;text-align:center}
+.studio-copy{text-align:center;color:var(--dim);font-size:14px;line-height:2;margin:0 auto 30px;max-width:32em}
+.swrap{display:grid;grid-template-columns:1fr;gap:12px}
+.swrap figure{margin:0;overflow:hidden;background:var(--surface);position:relative}
+.swrap img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/5;
+  transition:transform .6s var(--ease),opacity .5s;opacity:.96}
+.swrap figure:hover img{transform:scale(1.04);opacity:1}
+.swrap figcaption{position:absolute;left:0;right:0;bottom:0;
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--ink);
+  padding:22px 14px 12px;background:linear-gradient(to top,rgba(15,13,16,.82),rgba(15,13,16,0))}
+@media(min-width:700px){.swrap{grid-template-columns:repeat(3,1fr);gap:14px}}
+
+/* ========== QUICK ========== */
+.quick{max-width:720px;margin:0 auto;padding:88px 20px 88px}
+.quick .lbl{font-family:var(--mono);font-size:10px;letter-spacing:.24em;color:var(--cyan);margin-bottom:22px;text-align:center}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.card{border:1px solid var(--line);border-radius:14px;padding:16px;background:var(--surface);text-align:center}
+.card .k{font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--dim)}
+.card .v{font-size:16px;margin-top:6px;line-height:1.5}
+.card .v em{font-style:normal;font-family:var(--mono);color:var(--rose)}
+.more{display:block;width:100%;margin-top:22px;text-align:center;padding:16px;border:1px dashed var(--line);border-radius:14px;
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;color:var(--cyan);background:none;cursor:pointer;transition:.25s}
+.more:hover{background:var(--surface2);border-style:solid}
+
+footer{border-top:1px solid var(--line);padding:34px 20px 46px;text-align:center}
+footer .fb{font-family:var(--disp);font-size:14px;letter-spacing:.14em}
+footer .fa{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:var(--dim);margin-top:8px}
+footer .cp{font-family:var(--mono);font-size:10px;color:var(--dim);margin-top:18px}
+</style>
+</head>
+<body class="locked">
+
+<!-- ===== BOOT LOGO ===== -->
+<div id="boot" onclick="endBoot()">
+  <img src="img/logo.jpg" alt="tattoo studio Gukky">
+</div>
+
+<!-- ===== HEADER ===== -->
+<header>
+  <div class="brand">GUKKY <span>◆</span></div>
+  <button class="burger" id="burger" aria-label="詳細メニュー" onclick="toggleDrawer()">
+    <i></i><i></i><i></i>
+  </button>
+</header>
+
+<!-- ===== DRAWER : 詳細情報 ===== -->
+<div id="drawer">
+  <div class="inner">
+    <div class="dttl">MENU</div>
+
+    <!-- 01 MENU -->
+    <div class="acc">
+      <button class="ah" onclick="acc(this)">
+        <span class="no">01</span>
+        <span class="tx"><b>MENU</b><em>メニュー＆料金</em></span>
+        <span class="mk"></span>
+      </button>
+      <div class="ab"><div class="ai">
+        <p>デザイン料・カラー料金・消耗品はすべて無料。カウンセリング無料・前金なし。</p>
+        <h3>TATTOO（Non／見習いで料金が異なります）</h3>
+        <table class="tbl">
+          <tr><td>【Non】コインサイズ</td><td>¥10,000</td></tr>
+          <tr><td>【Non】名刺サイズ</td><td>¥30,000</td></tr>
+          <tr><td>【Non】ハガキサイズ</td><td>¥50,000</td></tr>
+          <tr><td>【見習い】モニター</td><td>¥7,000〜</td></tr>
+        </table>
+        <h3>JAGUA TATTOO（Non限定）</h3>
+        <p>針を使わず痛みゼロ。約2週間で消える天然染料のフェイクタトゥー。18歳未満も可。</p>
+        <table class="tbl">
+          <tr><td>コインサイズ</td><td>¥4,000</td></tr>
+          <tr><td>名刺サイズ</td><td>¥6,000</td></tr>
+          <tr><td>ハガキサイズ</td><td>¥8,000</td></tr>
+        </table>
+        <h3>アートメイク（Non限定）</h3>
+        <p>眉・アイライン・ほくろ。男女ともに施術可能、カラーも選べます。</p>
+        <table class="tbl">
+          <tr><td>眉（両眉・2回分）</td><td>¥30,000</td></tr>
+          <tr><td>ほくろ</td><td>¥6,000</td></tr>
+        </table>
+      </div></div>
+    </div>
+
+    <!-- 02 ARTIST -->
+    <div class="acc">
+      <button class="ah" onclick="acc(this)">
+        <span class="no">02</span>
+        <span class="tx"><b>ARTIST</b><em>アーティスト</em></span>
+        <span class="mk"></span>
+      </button>
+      <div class="ab"><div class="ai">
+        <p>女性彫師Non＋見習い3名。見習い彫師が特別価格でモニター様を募集中です。</p>
+        <a class="arow" href="artist_non.html">
+          <span class="r">ARTIST</span><span class="n">Non <i>-のん-</i></span>
+          <span class="d">青森県出身、活動歴11年目。ダークな世界観、クリーチャー、サイバーパンクが好き。</span>
+          <span class="p">TATTOO ¥10,000〜 ▸</span>
+        </a>
+        <a class="arow" href="artist_ryusei.html">
+          <span class="r">TRAINEE</span><span class="n">Ryusei <i>-りゅうせい-</i></span>
+          <span class="d">静岡出身、静岡育ち🗻 明るく親しみやすい接客が好評です。</span>
+          <span class="p">MONITOR ¥7,000〜 ▸</span>
+        </a>
+        <a class="arow" href="artist_daichi.html">
+          <span class="r">TRAINEE</span><span class="n">Daichi <i>-だいち-</i></span>
+          <span class="d">ダークで繊細。重厚感、細かいデザイン・ブラックワーク・ド迫力のハイブリッドを求めるならdaichi。</span>
+          <span class="p">MONITOR ¥7,000〜 ▸</span>
+        </a>
+        <a class="arow" href="artist_mika.html">
+          <span class="r">TRAINEE</span><span class="n">Mika <i>-みか-</i></span>
+          <span class="d">3児の母、女性目線の「怖くない」施術。初めての方・女性のお客様に。</span>
+          <span class="p">MONITOR ¥7,000〜 ▸</span>
+        </a>
+      </div></div>
+    </div>
+
+    <!-- 03 FLOW -->
+    <div class="acc">
+      <button class="ah" onclick="acc(this)">
+        <span class="no">03</span>
+        <span class="tx"><b>FLOW</b><em>ご予約から施術までの流れ</em></span>
+        <span class="mk"></span>
+      </button>
+      <div class="ab"><div class="ai">
+        <p>お電話・LINE・InstagramのDM、いずれの方法でもご予約頂けます。</p>
+        <ol class="flow">
+          <li><b>お問い合わせ</b><span>希望のデザイン・サイズ・部位・日時を添えてご連絡下さい。返信は必ず致します。</span></li>
+          <li><b>予約日を決める</b><span>空き状況をご案内。空きがあれば当日予約も可能です。</span></li>
+          <li><b>デザイン作成</b><span>やり取りを元にこちらでデザイン。事前にデザイン確認も可能です。</span></li>
+          <li><b>ご来店・施術</b><span>カウンセリングのみでもOK。カウンセリングと施術の同日も可能です。</span></li>
+        </ol>
+        <p class="note">※来店前の注意事項は必ずご確認ください。</p>
+      </div></div>
+    </div>
+
+    <!-- 04 ACCESS -->
+    <div class="acc">
+      <button class="ah" onclick="acc(this)">
+        <span class="no">04</span>
+        <span class="tx"><b>ACCESS</b><em>店舗情報</em></span>
+        <span class="mk"></span>
+      </button>
+      <div class="ab"><div class="ai">
+        <dl class="info">
+          <dt>ADDRESS</dt>
+          <dd>〒422-8045 静岡県静岡市駿河区西島446-2<br>静岡駅から車で約15分／無料駐車場あり</dd>
+          <dt>OPEN</dt>
+          <dd>10:00〜／不定休（営業日はブログで毎月更新）</dd>
+          <dt>PAYMENT</dt>
+          <dd>現金のみ（クレジットカード不可）</dd>
+          <dt>CONTACT</dt>
+          <dd><a class="iglink" href="https://www.instagram.com/tattoo_studio_gukky?igsh=bWtoaTJ3OHo3ZHRi&amp;utm_source=qr" target="_blank" rel="noopener">Instagram @tattoo_studio_gukky ▸</a><br>ご予約・ご相談はDMより承ります</dd>
+          <dt>STUDIO</dt>
+          <dd>完全予約制／EST.2015 — 2026年で11周年<br>女性彫師Non＋見習い3名の小さなアットホームな空間</dd>
+        </dl>
+      </div></div>
+    </div>
+
+    <!-- 05 NEWS -->
+    <div class="acc">
+      <button class="ah" onclick="acc(this)">
+        <span class="no">05</span>
+        <span class="tx"><b>NEWS</b><em>お知らせ</em></span>
+        <span class="mk"></span>
+      </button>
+      <div class="ab"><div class="ai">
+        <ul class="news">
+          <li>見習い彫師が特別価格でモニター様を募集中（¥7,000〜）</li>
+          <li>オリジナルグッズ店頭販売中</li>
+          <li>ご相談のみのご来店も歓迎</li>
+          <li>毎月の営業日はブログにて更新</li>
+        </ul>
+      </div></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="bg"><img src="img/hero.jpg" alt="スタジオ内観"></div>
+  <div class="ct">
+    <h1><small>TATTOO STUDIO</small><span class="mark">GUKKY</span></h1>
+    <p class="lead">静岡市駿河区の完全予約制タトゥースタジオ。<br>女性彫師Nonと見習い3名が、小さなアットホームな空間で丁寧に。<br>相談のみのご来店も歓迎です🕊️</p>
+    <div class="cta">
+      <a class="btn" href="https://www.instagram.com/tattoo_studio_gukky?igsh=bWtoaTJ3OHo3ZHRi&amp;utm_source=qr" target="_blank" rel="noopener">相談・予約する ▸</a>
+    </div>
+  </div>
+  <div class="scroll-hint">SCROLL ▾</div>
+</section>
+
+<!-- ===== GALLERY ===== -->
+<section class="gallery">
+  <div class="lbl">WORKS</div>
+  <div class="gwrap">
+    <figure><img src="img/work1.jpg" alt="work" loading="lazy"></figure>
+    <figure><img src="img/work2.jpg" alt="work" loading="lazy"></figure>
+    <figure><img src="img/work3.jpg" alt="work" loading="lazy"></figure>
+    <figure><img src="img/work4.jpg" alt="work" loading="lazy"></figure>
+  </div>
+</section>
+
+<!-- ===== ARTISTS ===== -->
+<section class="artists">
+  <div class="lbl">ARTISTS</div>
+  <div class="awrap">
+    <a class="acard" href="artist_non.html">
+      <div class="ph"><img src="img/artist_non.jpg" alt="Non" loading="lazy"></div>
+      <div class="meta"><span class="rl">ARTIST</span><span class="nm">Non</span><span class="pr">¥10,000〜</span></div>
+    </a>
+    <a class="acard" href="artist_ryusei.html">
+      <div class="ph"><img src="img/artist_ryusei.jpg" alt="Ryusei" loading="lazy"></div>
+      <div class="meta"><span class="rl">TRAINEE</span><span class="nm">Ryusei</span><span class="pr">¥7,000〜</span></div>
+    </a>
+    <a class="acard" href="artist_daichi.html">
+      <div class="ph"><img src="img/artist_daichi.jpg" alt="Daichi" loading="lazy"></div>
+      <div class="meta"><span class="rl">TRAINEE</span><span class="nm">Daichi</span><span class="pr">¥7,000〜</span></div>
+    </a>
+    <a class="acard" href="artist_mika.html">
+      <div class="ph"><img src="img/artist_mika.jpg" alt="Mika" loading="lazy"></div>
+      <div class="meta"><span class="rl">TRAINEE</span><span class="nm">Mika</span><span class="pr">¥7,000〜</span></div>
+    </a>
+  </div>
+</section>
+
+<!-- ===== STUDIO ===== -->
+<section class="studio">
+  <div class="lbl">STUDIO</div>
+  <p class="studio-copy">清潔で、居心地のいい空間。<br>使い捨て器材と衛生管理を徹底し、はじめての方も安心して過ごせるスタジオです。</p>
+  <div class="swrap">
+    <figure><img src="img/studio1.jpg" alt="スタジオ内観 施術スペース" loading="lazy"><figcaption>明るい施術スペース</figcaption></figure>
+    <figure><img src="img/studio2.jpg" alt="スタジオ内観 全体" loading="lazy"><figcaption>清潔感のある店内</figcaption></figure>
+    <figure><img src="img/studio3.jpg" alt="スタジオ内観 待合スペース" loading="lazy"><figcaption>くつろげる待合スペース</figcaption></figure>
+  </div>
+</section>
+
+<!-- ===== QUICK ===== -->
+<section class="quick">
+  <div class="lbl">AT A GLANCE</div>
+  <div class="grid">
+    <div class="card"><div class="k">TATTOO</div><div class="v"><em>¥7,000〜</em></div></div>
+    <div class="card"><div class="k">JAGUA / 痛みゼロ</div><div class="v"><em>¥4,000〜</em></div></div>
+    <div class="card"><div class="k">アートメイク</div><div class="v"><em>¥6,000〜</em></div></div>
+    <div class="card"><div class="k">OPEN</div><div class="v">10:00〜<br><em>不定休</em></div></div>
+    <div class="card"><div class="k">ACCESS</div><div class="v">静岡市駿河区西島446-2<br><em>静岡駅 車15分</em></div></div>
+    <div class="card"><div class="k">PAYMENT</div><div class="v"><em>現金のみ</em></div></div>
+    <div class="card"><div class="k">衛生管理</div><div class="v">使い捨て器材<br><em>徹底</em></div></div>
+  </div>
+  <button class="more" onclick="toggleDrawer()">☰ メニュー・料金・予約の詳細を見る</button>
+</section>
+
+<footer>
+  <div class="fb">TATTOO STUDIO GUKKY</div>
+  <div class="fa">SHIZUOKA-SHI SURUGA-KU NISHIJIMA 446-2</div>
+  <div class="fa"><a class="iglink" href="https://www.instagram.com/tattoo_studio_gukky?igsh=bWtoaTJ3OHo3ZHRi&amp;utm_source=qr" target="_blank" rel="noopener">◆ INSTAGRAM</a></div>
+  <div class="cp">© TATTOO STUDIO Gukky — EST.2015 / 11TH ANNIV. 2026 🌹</div>
+</footer>
+
+<script>
+/* boot */
+var booted=false;
+function endBoot(){
+  if(booted)return; booted=true;
+  document.getElementById('boot').classList.add('done');
+  document.body.classList.remove('locked');
+}
+setTimeout(endBoot,3000);
+
+/* accordion */
+function acc(btn){
+  var box=btn.parentElement, body=btn.nextElementSibling;
+  var on=box.classList.toggle('on');
+  body.style.maxHeight = on ? body.scrollHeight+'px' : 0;
+  if(on){
+    var sibs=box.parentElement.querySelectorAll('.acc.on');
+    sibs.forEach(function(s){
+      if(s!==box){s.classList.remove('on');s.querySelector('.ab').style.maxHeight=0;}
+    });
+    setTimeout(function(){box.scrollIntoView({behavior:'smooth',block:'start'});},260);
+  }
+}
+window.addEventListener('resize',function(){
+  document.querySelectorAll('.acc.on .ab').forEach(function(b){b.style.maxHeight=b.scrollHeight+'px';});
+});
+
+/* drawer */
+function toggleDrawer(){
+  var d=document.getElementById('drawer'), b=document.getElementById('burger');
+  var open=d.classList.toggle('open');
+  b.classList.toggle('open',open);
+  document.body.classList.toggle('locked',open);
+  if(open){d.scrollTop=0;}
+  else{
+    d.querySelectorAll('.acc.on').forEach(function(s){s.classList.remove('on');s.querySelector('.ab').style.maxHeight=0;});
+  }
+}
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape'&&document.getElementById('drawer').classList.contains('open'))toggleDrawer();
+});
+</script>
+</body>
+</html>
