@@ -143,6 +143,27 @@ header .brand span{color:var(--rose)}
 .news li::before{content:"▸";position:absolute;left:0;color:var(--rose)}
 .note{font-size:12.5px;color:var(--dim);margin-top:10px}
 .iglink{color:var(--cyan);text-decoration:none}
+
+/* ===== LINE 導線（Non） ===== */
+.linebox{margin-top:16px;padding:16px;border:1px solid var(--line);border-radius:14px;
+  background:linear-gradient(180deg,rgba(6,199,85,.10),rgba(255,255,255,.02));text-align:center}
+.linebtn{display:flex;align-items:center;gap:14px;text-decoration:none;
+  background:#06C755;border-radius:12px;padding:14px 18px;
+  box-shadow:0 6px 22px rgba(6,199,85,.32);transition:.25s var(--ease)}
+.linebtn:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(6,199,85,.45)}
+.linebtn .lmark{font-family:var(--mono);font-size:13px;letter-spacing:.1em;font-weight:700;
+  color:#06C755;background:#fff;border-radius:8px;padding:7px 10px;flex:none}
+.linebtn .ltx{display:flex;flex-direction:column;align-items:flex-start;line-height:1.5;text-align:left}
+.linebtn .ltx b{color:#fff;font-size:14.5px;font-weight:700}
+.linebtn .ltx em{font-family:var(--mono);font-style:normal;font-size:10.5px;
+  letter-spacing:.14em;color:rgba(255,255,255,.88)}
+.lnote{font-size:11.5px;color:var(--dim);margin:12px 0 10px;line-height:1.7}
+.lqr{width:150px;height:150px;margin:0 auto;border-radius:10px;
+  border:1px solid var(--line);background:#fff;padding:8px}
+@media(max-width:380px){
+  .linebtn{gap:10px;padding:13px 14px}
+  .linebtn .ltx b{font-size:13.5px}
+}
 .iglink:hover{color:var(--rose)}
 
 /* ========== HERO ========== */
@@ -262,7 +283,7 @@ footer .cp{font-family:var(--mono);font-size:10px;color:var(--dim);margin-top:18
           <tr><td>【Non】コインサイズ</td><td>¥10,000</td></tr>
           <tr><td>【Non】名刺サイズ</td><td>¥30,000</td></tr>
           <tr><td>【Non】ハガキサイズ</td><td>¥50,000</td></tr>
-          <tr><td>【見習い】モニター</td><td>¥7,000〜</td></tr>
+          <tr><td>【見習い】モニター</td><td>¥10,000〜</td></tr>
         </table>
         <h3>JAGUA TATTOO（Non限定）</h3>
         <p>針を使わず痛みゼロ。約2週間で消える天然染料のフェイクタトゥー。18歳未満も可。</p>
@@ -298,17 +319,17 @@ footer .cp{font-family:var(--mono);font-size:10px;color:var(--dim);margin-top:18
         <a class="arow" href="artist_ryusei.html">
           <span class="r">TRAINEE</span><span class="n">Ryusei <i>-りゅうせい-</i></span>
           <span class="d">静岡出身、静岡育ち🗻 明るく親しみやすい接客が好評です。</span>
-          <span class="p">MONITOR ¥7,000〜 ▸</span>
+          <span class="p">MONITOR ¥10,000〜 ▸</span>
         </a>
         <a class="arow" href="artist_daichi.html">
           <span class="r">TRAINEE</span><span class="n">Daichi <i>-だいち-</i></span>
           <span class="d">ダークで繊細。重厚感、細かいデザイン・ブラックワーク・ド迫力のハイブリッドを求めるならdaichi。</span>
-          <span class="p">MONITOR ¥7,000〜 ▸</span>
+          <span class="p">MONITOR ¥10,000〜 ▸</span>
         </a>
         <a class="arow" href="artist_mika.html">
           <span class="r">TRAINEE</span><span class="n">Mika <i>-みか-</i></span>
           <span class="d">3児の母、女性目線の「怖くない」施術。初めての方・女性のお客様に。</span>
-          <span class="p">MONITOR ¥7,000〜 ▸</span>
+          <span class="p">MONITOR ¥10,000〜 ▸</span>
         </a>
       </div></div>
     </div>
@@ -344,11 +365,11 @@ footer .cp{font-family:var(--mono);font-size:10px;color:var(--dim);margin-top:18
           <dt>ADDRESS</dt>
           <dd>〒422-8045 静岡県静岡市駿河区西島446-2<br>静岡駅から車で約15分／無料駐車場あり</dd>
           <dt>OPEN</dt>
-          <dd>10:00〜／不定休（営業日はブログで毎月更新）</dd>
+          <dd>10:00〜／不定休</dd>
           <dt>PAYMENT</dt>
           <dd>現金のみ（クレジットカード不可）</dd>
           <dt>CONTACT</dt>
-          <dd><a class="iglink" href="https://www.instagram.com/tattoo_studio_gukky?igsh=bWtoaTJ3OHo3ZHRi&amp;utm_source=qr" target="_blank" rel="noopener">Instagram @tattoo_studio_gukky ▸</a><br>ご予約・ご相談はDMより承ります</dd>
+          <dd><a class="iglink" href="https://www.instagram.com/tattoo_studio_gukky?igsh=bWtoaTJ3OHo3ZHRi&amp;utm_source=qr" target="_blank" rel="noopener">Instagram @tattoo_studio_gukky ▸</a><br>ご予約、ご相談はLINEやInstagramのDMでお気軽にどうぞ🌿<br>予約状況、営業日や休業日はInstagramのハイライトで更新しております📣<div class="linebox"><a class="linebtn" href="https://line.me/ti/p/C4Vn2cwUj_" target="_blank" rel="noopener"><span class="lmark">LINE</span><span class="ltx"><b>Nonに LINE で相談する</b><em>タップで友だち追加 ▸</em></span></a><p class="lnote">スマホからはボタンをタップ、PCからはQRコードを読み取ってください。</p><img class="lqr" src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&amp;margin=0&amp;data=https://line.me/ti/p/C4Vn2cwUj_" alt="Non LINE QRコード" loading="lazy" width="150" height="150"></div></dd>
           <dt>STUDIO</dt>
           <dd>完全予約制／EST.2015 — 2026年で11周年<br>女性彫師Non＋見習い3名の小さなアットホームな空間</dd>
         </dl>
@@ -364,10 +385,10 @@ footer .cp{font-family:var(--mono);font-size:10px;color:var(--dim);margin-top:18
       </button>
       <div class="ab"><div class="ai">
         <ul class="news">
-          <li>見習い彫師が特別価格でモニター様を募集中（¥7,000〜）</li>
+          <li>見習い彫師が特別価格でモニター様を募集中（¥10,000〜）</li>
           <li>オリジナルグッズ店頭販売中</li>
           <li>ご相談のみのご来店も歓迎</li>
-          <li>毎月の営業日はブログにて更新</li>
+          <li>毎月の営業日や定休日はInstagramのハイライトにて更新中！</li>
         </ul>
       </div></div>
     </div>
@@ -409,15 +430,15 @@ footer .cp{font-family:var(--mono);font-size:10px;color:var(--dim);margin-top:18
     </a>
     <a class="acard" href="artist_ryusei.html">
       <div class="ph"><img src="img/artist_ryusei.jpg" alt="Ryusei" loading="lazy"></div>
-      <div class="meta"><span class="rl">TRAINEE</span><span class="nm">Ryusei</span><span class="pr">¥7,000〜</span></div>
+      <div class="meta"><span class="rl">TRAINEE</span><span class="nm">Ryusei</span><span class="pr">¥10,000〜</span></div>
     </a>
     <a class="acard" href="artist_daichi.html">
       <div class="ph"><img src="img/artist_daichi.jpg" alt="Daichi" loading="lazy"></div>
-      <div class="meta"><span class="rl">TRAINEE</span><span class="nm">Daichi</span><span class="pr">¥7,000〜</span></div>
+      <div class="meta"><span class="rl">TRAINEE</span><span class="nm">Daichi</span><span class="pr">¥10,000〜</span></div>
     </a>
     <a class="acard" href="artist_mika.html">
       <div class="ph"><img src="img/artist_mika.jpg" alt="Mika" loading="lazy"></div>
-      <div class="meta"><span class="rl">TRAINEE</span><span class="nm">Mika</span><span class="pr">¥7,000〜</span></div>
+      <div class="meta"><span class="rl">TRAINEE</span><span class="nm">Mika</span><span class="pr">¥10,000〜</span></div>
     </a>
   </div>
 </section>
@@ -437,7 +458,7 @@ footer .cp{font-family:var(--mono);font-size:10px;color:var(--dim);margin-top:18
 <section class="quick">
   <div class="lbl">AT A GLANCE</div>
   <div class="grid">
-    <div class="card"><div class="k">TATTOO</div><div class="v"><em>¥7,000〜</em></div></div>
+    <div class="card"><div class="k">TATTOO</div><div class="v"><em>¥10,000〜</em></div></div>
     <div class="card"><div class="k">JAGUA / 痛みゼロ</div><div class="v"><em>¥4,000〜</em></div></div>
     <div class="card"><div class="k">アートメイク</div><div class="v"><em>¥6,000〜</em></div></div>
     <div class="card"><div class="k">OPEN</div><div class="v">10:00〜<br><em>不定休</em></div></div>
